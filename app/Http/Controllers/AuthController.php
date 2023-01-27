@@ -35,7 +35,7 @@ public function login(Request $request)
 {
 if (!Auth::attempt($request->only('email', 'password'))) {
 return response()->json([
-'message' => 'Invalid login details'
+'message' => 'Invalid login credentials'
            ], 401);
        }
 
@@ -52,7 +52,10 @@ return response()->json([
 
 public function infouser(Request $request)
 {
-return $request->user();
+$name = $request->user()['id'];
+return response()->json([
+    'name' => $name
+]);
 }
 
 

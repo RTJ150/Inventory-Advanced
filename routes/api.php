@@ -3,6 +3,7 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\CommerceController;
 
 /*
 |--------------------------------------------------------------------------
@@ -23,4 +24,12 @@ Route::post('/register', [AuthController::class, 'register']);
 Route::post('/login', [AuthController::class, 'login']);
 
 Route::post('/userinfo', [AuthController::class, 'infouser'])->middleware('auth:sanctum');
+
+Route::post('/commercenew', [CommerceController::class, 'create'])->middleware('auth:sanctum');
+
+Route::post('/commerceinfo', [CommerceController::class, 'retrieve'])->middleware('auth:sanctum');
+
+Route::post('/commerceupdate', [CommerceController::class, 'update'])->middleware('auth:sanctum');
+
+Route::post('/commercedelete', [CommerceController::class, 'delete'])->middleware('auth:sanctum');
 
